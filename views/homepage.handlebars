@@ -1,0 +1,15 @@
+{{#each posts as |post| }}
+<a class="post-link" href="/api/posts/{{post.id}}">
+<div class="row postWrapper" id="{{post.id}}">
+    <div class="postTitle col-md-6">
+        <h2>{{post.title}}</h2>
+    </div>
+    <div class="postName col-md-6">
+        <p>Posted by {{post.user.name}} at {{post.createdAt}}</p>
+    </div>
+    <div class="row postContent">
+        {{post.content}}
+    </div>
+</div>
+</a>
+{{/each}}

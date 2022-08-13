@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Javascript",
+        "content": "Is cool.",
+        "user_id": 1
+    },
+    {
+        "title": "My hands hurt...",
+        "content": "...from typing so much code.",
+        "user_id": 2
+    },
+    {
+        "title": "Hello World",
+        "content": "not a simulated human. A real human. Definitely.",
+        "user_id": 3
+    },
+    {
+        "title": "Do user posts show where they should?",
+        "content": "We'll find out.",
+        "user_id": 4
+    },
+    {
+        "title": "Do user posts show where they should?",
+        "content": "We'll find out.",
+        "user_id": 4
+    }
+
+]
