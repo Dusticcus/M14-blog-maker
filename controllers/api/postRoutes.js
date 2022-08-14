@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { User } = require('../../models');
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -17,7 +18,7 @@ router.get('/:id', withAuth, async (req, res) => {
     // singlePost.push(post);
     // id = req.params.id;
 
-    
+
     const postComments = postData.comments.map((project) => project.get({ plain: true }));
     // postCommentsSplit.push(postComments);
     console.log(post);
@@ -29,6 +30,21 @@ router.get('/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.post('/new', withAuth, async (req, res) => {
+  console.log(req.session.user_id);
+
+    const postData = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
+    })
+    .then((response) => res.status(200).json(response))
+    .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
 });
 
 
