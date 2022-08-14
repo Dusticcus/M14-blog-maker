@@ -9,7 +9,7 @@ const newCommentHandler = async (event) => {
     if (comment !== '') {
         const response = await fetch('/api/posts/newcomments', {
             method: 'POST',
-            body: JSON.stringify({ name: "anonymous", content: comment.value, post_id: post_id.dataset.id }),
+            body: JSON.stringify({ content: comment.value, post_id: post_id.dataset.id }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {

@@ -16,6 +16,7 @@ router.get('/:id', withAuth, async (req, res) => {
       include: { attributes: { exclude: ['password'] }, all: true },
     })
     const post = postData.get({ plain: true });
+    console.log(req.session);
     // singlePost.push(post);
     // id = req.params.id;
 
@@ -52,7 +53,7 @@ router.post('/newcomments', withAuth, async (req, res) => {
   console.log(req.session.user_id);
 
     const postData = await Comment.create({
-      name: req.body.name,
+      name: req.session.name,
       content: req.body.content,
       user_id: req.session.user_id,
       post_id: req.body.post_id

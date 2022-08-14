@@ -5,22 +5,22 @@ const { User } = require('../../models');
 router.post('/signup', async (req, res) => {
   console.log(req.body);
   try {
-      const userData = await User.create({
-          email: req.body.email,
-          name: req.body.name,
-          password: req.body.password,
-      });
+    const userData = await User.create({
+      email: req.body.email,
+      name: req.body.name,
+      password: req.body.password,
+    });
 
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-        
-        res.json({ user: userData, message: 'You are now logged in!' });
-      });
-      console.log("NEW USER");
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.name = userData.name;
+      req.session.logged_in = true;
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+    console.log("NEW USER");
   } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 // --------------------------------
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+      req.session.name = userData.name;
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
