@@ -34,4 +34,24 @@ router.get('/', withAuth, async (req, res) => {
   });
   // --------------------------------
 
+  // UPDATE Post Comment
+  router.put('/:id', withAuth, async (req, res) => {
+    // update a category by its `id` value
+    console.log(req.body);
+    try {
+      const postCommentUpdateData = await Post.update(req.body, {
+        where: {
+          id: req.body.id,
+        },
+      });
+      res.status(200).json(postCommentUpdateData);
+  
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
+  
+  });
+  // -------------------
+
 module.exports = router;

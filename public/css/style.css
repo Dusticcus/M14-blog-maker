@@ -55,3 +55,8 @@ a.post-link {
 .row {
     margin-bottom: 50px !important;
 }
+
+.changeContent {
+    display: inline-block;
+    white-space: pre-wrap;
+}

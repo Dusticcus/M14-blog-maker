@@ -1,0 +1,15 @@
+{{#each postComments as |comment| }}
+
+<div class="row postWrapper" id="{{post.id}}">
+    <div class="postTitle col-md-6">
+        {{comment.name}}
+    </div>
+    <div class="postName col-md-6">
+
+    </div>
+    <div class="row postContent">
+        <h2>{{comment.content}}</h2>
+    </div>
+</div>
+
+{{/each}}
