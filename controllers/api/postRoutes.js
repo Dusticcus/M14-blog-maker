@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { response } = require('express');
 const { User } = require('../../models');
 const { Post } = require('../../models');
+const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 let singlePost = [];
@@ -39,6 +40,22 @@ router.post('/new', withAuth, async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,
+    })
+    .then((response) => res.status(200).json(response))
+    .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+});
+
+router.post('/newcomments', withAuth, async (req, res) => {
+  console.log(req.session.user_id);
+
+    const postData = await Comment.create({
+      name: req.body.name,
+      content: req.body.content,
+      user_id: req.session.user_id,
+      post_id: req.body.post_id
     })
     .then((response) => res.status(200).json(response))
     .catch((err) => {
